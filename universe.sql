@@ -171,7 +171,7 @@ ALTER SEQUENCE public.planet_planet_id_seq OWNED BY public.planet.planet_id;
 
 CREATE TABLE public.planet_types (
     planet_types_id integer NOT NULL,
-    type character varying(20) NOT NULL,
+    name character varying(20) NOT NULL,
     description text NOT NULL
 );
 
@@ -336,18 +336,21 @@ INSERT INTO public.planet VALUES (24, 'Genue', NULL, NULL, 6.5, NULL, NULL, true
 -- Data for Name: planet_types; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
+INSERT INTO public.planet_types VALUES (2, 'Super Jupiter', 'dfht fhdr erje');
+INSERT INTO public.planet_types VALUES (3, 'Giant Planet', 'dgfte dhte djsuj');
+INSERT INTO public.planet_types VALUES (4, 'Sub Earth', 'wsegsk fdfike swed ');
 
 
 --
 -- Data for Name: star; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.star VALUES (1, 'Lynx', NULL, NULL, 9.5, NULL, NULL, false, NULL);
-INSERT INTO public.star VALUES (2, 'Crux', NULL, NULL, 6.3, NULL, NULL, true, NULL);
-INSERT INTO public.star VALUES (3, 'Leo', NULL, NULL, 5.6, NULL, NULL, true, NULL);
-INSERT INTO public.star VALUES (4, 'Cancer', NULL, NULL, 4.6, NULL, NULL, false, NULL);
-INSERT INTO public.star VALUES (5, 'Scorpius', NULL, NULL, 23.6, NULL, NULL, true, NULL);
-INSERT INTO public.star VALUES (6, 'Taurus', NULL, NULL, 6.8, NULL, NULL, true, NULL);
+INSERT INTO public.star VALUES (6, 'Taurus', NULL, NULL, 6.8, NULL, NULL, true, 1);
+INSERT INTO public.star VALUES (5, 'Scorpius', NULL, NULL, 23.6, NULL, NULL, true, 2);
+INSERT INTO public.star VALUES (3, 'Leo', NULL, NULL, 5.6, NULL, NULL, true, 3);
+INSERT INTO public.star VALUES (1, 'Lynx', NULL, NULL, 9.5, NULL, NULL, false, 6);
+INSERT INTO public.star VALUES (2, 'Crux', NULL, NULL, 6.3, NULL, NULL, true, 4);
+INSERT INTO public.star VALUES (4, 'Cancer', NULL, NULL, 4.6, NULL, NULL, false, 5);
 
 
 --
@@ -375,7 +378,7 @@ SELECT pg_catalog.setval('public.planet_planet_id_seq', 24, true);
 -- Name: planet_types_planet_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.planet_types_planet_type_id_seq', 1, false);
+SELECT pg_catalog.setval('public.planet_types_planet_type_id_seq', 4, true);
 
 
 --
@@ -446,7 +449,7 @@ ALTER TABLE ONLY public.planet_types
 --
 
 ALTER TABLE ONLY public.planet_types
-    ADD CONSTRAINT planet_types_type_key UNIQUE (type);
+    ADD CONSTRAINT planet_types_type_key UNIQUE (name);
 
 
 --
@@ -492,3 +495,4 @@ ALTER TABLE ONLY public.star
 --
 -- PostgreSQL database dump complete
 --
+
